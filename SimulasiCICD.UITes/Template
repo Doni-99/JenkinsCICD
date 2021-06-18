@@ -1,0 +1,55 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using Xunit;
+using System;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+
+namespace SimulasiCICD.UITes
+{
+    public class Home: IDisposable
+    {
+        private string appURL;
+        private IWebDriver driver;
+        public Home()
+        {
+            //appURL = "https://localhost:5001";
+            appURL = "https://rnd.praisindo.com/CICD";
+
+            string browser = "Chrome";
+            switch (browser)
+            {
+                case "Chrome":
+                    ChromeOptions opt = new ChromeOptions();
+                    opt.AddArgument("ignore-certificate-errors");
+                    opt.AddArgument("headless");
+                    driver = new ChromeDriver(opt);
+                    break;
+                case "Firefox":
+                    driver = new FirefoxDriver();
+                    break;
+                case "IE":
+                    driver = new InternetExplorerDriver();
+                    break;
+                default:
+                    driver = new ChromeDriver();
+                    break;
+            }
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+        }
+
+        [Fact]
+        public void click_Privacy_Show_Privacy_True()
+        {
+            driver.Navigate().GoToUrl(appURL);
+
+            driver.FindElement(By.XPath(@"")).Click();
+            Assert.Equal("", driver.Title.ToString());
+        }
+
+        public void Dispose()
+        {
+            driver.Quit();
+        }
+    }
+}
