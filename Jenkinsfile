@@ -10,7 +10,6 @@ pipeline {
             steps {
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" restore \"${workspace}/SimulasiCICD.sln\""
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" build \"${workspace}/SimulasiCICD.sln\""
-                //bat "\"C:/Program Files/dotnet/dotnet.exe\" run --project \"${workspace}/SimulasiCICD/SimulasiCICD.csproj\""
             }
         }
         stage('Docker Build') {
