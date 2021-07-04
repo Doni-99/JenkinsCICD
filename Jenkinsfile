@@ -10,7 +10,12 @@ pipeline {
             steps {
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" restore \"${workspace}/SimulasiCICD.sln\""
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" build \"${workspace}/SimulasiCICD.sln\""
-                bat "\"C:/Program Files/dotnet/dotnet.exe\" run --project \"${workspace}/SimulasiCICD/SimulasiCICD.csproj\""
+                //bat "\"C:/Program Files/dotnet/dotnet.exe\" run --project \"${workspace}/SimulasiCICD/SimulasiCICD.csproj\""
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                dockerImage = docker.build("JenkinsCiCd")
             }
         }
         stage('Test'){
@@ -19,5 +24,4 @@ pipeline {
                 step([$class: 'MSTestPublisher', testResultsFile:"**/unit_tests.xml", failOnError: true, keepLongStdio: true])
             }
         }
-    }
 }
