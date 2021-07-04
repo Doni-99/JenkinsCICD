@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" restore \"${workspace}/SimulasiCICD.sln\""
-                bat "\"C:/Program Files/dotnet/dotnet.exe\" build \"${workspace}/SimulasiCICD.sln\""
+                bat "\"C:/Program Files/dotnet/dotnet.exe\" publish \"${workspace}/SimulasiCICD.sln\""
             }
         }        
         stage('Docker Build') {
