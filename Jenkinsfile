@@ -12,11 +12,6 @@ pipeline {
                 bat "\"C:/Program Files/dotnet/dotnet.exe\" build \"${workspace}/SimulasiCICD.sln\""
             }
         }
-        stage('Docker Build') {
-            steps {
-                dockerImage = docker.build("JenkinsCiCd")
-            }
-        }
         stage('Test'){
             steps{
                 bat returnStatus: true, script: "\"C:/Program Files/dotnet/dotnet.exe\" test \"${workspace}/SimulasiCICD.UITes/SimulasiCICD.UITes.csproj\" --logger \"trx;LogFileName=unit_tests.xml\" --no-build"
