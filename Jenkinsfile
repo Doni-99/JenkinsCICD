@@ -15,7 +15,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build("JenkinsCiCd")
+                    dockerImage = docker.build JenkinsCiCd
                 }
             }
         }
