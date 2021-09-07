@@ -16,6 +16,7 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build("jenkinscicd")
+                    dockerImage.run('-p 5000:80')
                 }
             }
         }
