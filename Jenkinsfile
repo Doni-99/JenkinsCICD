@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Test'){
             steps{
-                bat returnStatus: true, script: "dotnet test \"${workspace}/SimulasiCICD.UITes/SimulasiCICD.UITes.csproj\" --logger \"trx;LogFileName=unit_tests.xml\" --no-build"
+                bat returnStatus: true, script: "dotnet test \"${workspace}\SimulasiCICD.UITes\SimulasiCICD.UITes.csproj\" --logger \"trx;LogFileName=unit_tests.xml\" -c Release --no-build"
                 step([$class: 'MSTestPublisher', testResultsFile:"**/unit_tests.xml", failOnError: true, keepLongStdio: true])
             }
         }
