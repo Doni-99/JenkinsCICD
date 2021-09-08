@@ -26,23 +26,23 @@ namespace SimulasiCICD.UITes
         {
             get { return driver.FindElement(By.Id(@"Price")); }
         }
-        string Env = "Prod";
+        string Env = "Dev";
         private string appURL;
         private IWebDriver driver;
         #endregion
         public Movies()
         {
             if (Env.Equals("Dev"))
-                appURL = "https://localhost:5001";
+                appURL = "http://localhost:5000";
             else
-                appURL = "https://rnd.praisindo.com/CICD";
+            appURL = "https://rnd.praisindo.com/CICD";
 
             string browser = "Chrome";
             switch (browser)
             {
                 case "Chrome":
                     ChromeOptions opt = new ChromeOptions();
-                    opt.AddArgument("ignore-certificate-errors");
+                    opt.AddArgument("ignore-certificate-errors");                 
                     if (!Env.Equals("Dev"))
                         opt.AddArgument("headless");
                     driver = new ChromeDriver(opt);
