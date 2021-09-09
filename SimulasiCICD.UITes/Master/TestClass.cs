@@ -12,8 +12,7 @@ namespace SimulasiCICD.UITes
         protected IWebDriver driver;
         public TestClass()
         {
-            appURL = "https://localhost:5001";
-            //appURL = "https://rnd.praisindo.com/CICD";
+            appURL = "https://localhost:5000";
 
             string browser = "Chrome";
             switch (browser)

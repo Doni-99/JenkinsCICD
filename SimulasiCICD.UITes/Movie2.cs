@@ -7,6 +7,7 @@ namespace SimulasiCICD.UITes
         Object.Movie oMovie;
         public Movie2(){
             oMovie = new Object.Movie(driver);
+            appURL = "http://localhost:5000";
         }
 
         [Fact]
@@ -26,6 +27,12 @@ namespace SimulasiCICD.UITes
             driver.FindElement(By.XPath(@"/html/body/div/main/div[1]/div/form/div[5]/input")).Click();
 
             Assert.Equal("Index", driver.FindElement(By.XPath(@"/html/body/div/main/h1")).GetAttribute("innerHTML").ToString());
+        }
+        [Fact]
+        public void ValidateIndextTitle()
+        {
+            driver.Navigate().GoToUrl(appURL);
+            Assert.Equal("Home Page - SimulasiCICD", driver.Title);
         }
     }
 }
